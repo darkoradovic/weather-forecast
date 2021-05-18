@@ -7,7 +7,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.row {
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  min-width: 50px;
+  padding-top: 9px;
+  text-align: center;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: none;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid black;
+  border-left: none;
+}
+
+.input-field:focus{
+  outline: none;
+}
+
+.btn{
+  padding: 10px  !important;
 }
