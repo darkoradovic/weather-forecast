@@ -1,32 +1,39 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Row, Col, FormControl, Button } from "react-bootstrap";
+import React, { useState, useContext } from "react";
+import { withRouter } from "react-router";
+import { Row, Col} from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import CardHome from "../components/CardHome";
+import { WeatherContext } from "../WeatherContext";
 
-const HomePage = () => {
-  const [city, setCity] = useState("");
-  const [results, setResults] = useState(null);
+const HomePage = ({history}) => {
 
-  const API = "baa188ec83f89bf8f7c82e429dbef294";
+  const [city, setCity] = useState('')
+  const {setResults} = useContext(WeatherContext)
+  
+
+  const API_KEY = "baa188ec83f89bf8f7c82e429dbef294";
 
   const handleSearch = () => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
       )
       .then((res) => {
         setResults(res.data);
-        console.log(res.data.name);
+        console.log(res.data);
       });
-      setCity("")
+      setCity("");
+      setTimeout(() => {
+       history.push('/city')
+      }, 1000);
   };
 
   const onKeyDown = (event) => {
     if (event.keyCode === 13) {
       handleSearch();
     }
-  };
+  }; 
 
   return (
     <Row>
@@ -45,9 +52,9 @@ const HomePage = () => {
           />
         </div>
       </Col>
-        {results ? <CardHome name={results.name} /> : null}
+       {/*  {results ? <CardHome name={results.name} temp={results.main.temp} /> : null} */}
     </Row>
   );
 };
 
-export default HomePage;
+export default withRouter(HomePage);

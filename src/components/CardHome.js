@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import {Card} from 'react-bootstrap'
+import { WeatherContext } from "../WeatherContext";
 
-const CardHome = ({name}) => {
+const CardHome = ({name, temp}) => {
 
   return (
     <Card style={{ width: "18rem" }}>
@@ -9,8 +10,7 @@ const CardHome = ({name}) => {
         <Card.Title>{name}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {temp}
         </Card.Text>
       </Card.Body>
     </Card>

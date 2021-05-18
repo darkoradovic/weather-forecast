@@ -49,3 +49,9 @@ body {
 .btn{
   padding: 10px  !important;
 }
+
+.header{
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-between;
+}
