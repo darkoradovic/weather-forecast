@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import {Card} from 'react-bootstrap'
-import { WeatherContext } from "../WeatherContext";
 
-const CardHome = ({name, temp}) => {
+const CardHome = ({name, time}) => {
 
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ margin:'20px 10px', display:'flex', flexWrap:'wrap' }}>
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+        <Card.Title>{(name).charAt(0).toUpperCase() + (name).slice(1)}</Card.Title>
         <Card.Text>
-          {temp}
+          {time}
         </Card.Text>
       </Card.Body>
     </Card>

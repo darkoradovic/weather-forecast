@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { WeatherContext } from "../WeatherContext";
 
-const LineChart = () => {
+const LineChart = ({datas}) => {
 
-  const datas = useContext(WeatherContext)
 
   console.log(datas.datas.daily)
 
@@ -39,10 +38,6 @@ const LineChart = () => {
 
   return (
     <div>
-      <div className="header">
-        <h4 className="title">Forecast for the next 7 days</h4>
-        <button>SWITCH</button>
-      </div>
       <Line data={data} options={options} />
     </div>
   );

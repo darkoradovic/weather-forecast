@@ -8,6 +8,7 @@ export const WeatherProvider = (props) => {
 
   console.log(results);
   console.log(datas);
+  
 
   return (
     <WeatherContext.Provider value={{ results, setResults, datas, setData }}>
