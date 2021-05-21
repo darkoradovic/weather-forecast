@@ -10,6 +10,8 @@ import { WeatherContext } from "../WeatherContext";
 
 const CityPage = ({ history }) => {
   const { setDatas } = useContext(WeatherContext);
+  const { setDesc } = useContext(WeatherContext);
+  const { setIcon } = useContext(WeatherContext);
   const results = useContext(WeatherContext);
   const { setResults } = useContext(WeatherContext);
   const { setLoading } = useContext(WeatherContext);
@@ -31,7 +33,9 @@ const CityPage = ({ history }) => {
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${API_KEY}`
       )
         .then((response) => response.json())
-        .then((result) => setDatas(result.daily))
+        .then((result) => {
+          setDatas(result.daily);
+        })
         .catch(() => console.log("Error"));
 
       setLoading(false);

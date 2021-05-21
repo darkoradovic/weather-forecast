@@ -1,14 +1,25 @@
 import React, { useContext } from "react";
 import { Line } from "react-chartjs-2";
 import { WeatherContext } from "../WeatherContext";
+import moment from "moment";
 
 const LineChart = () => {
   const datas = useContext(WeatherContext);
 
+  console.log(datas.datas);
+
   const info = datas.datas.map((data) => (data.temp.day - 273).toFixed(0));
 
   const data = {
-    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    labels: [
+      moment().add(1, "days").format("DD MMMM").toString(),
+      moment().add(2, "days").format("DD MMMM").toString(),
+      moment().add(3, "days").format("DD MMMM").toString(),
+      moment().add(4, "days").format("DD MMMM").toString(),
+      moment().add(5, "days").format("DD MMMM").toString(),
+      moment().add(6, "days").format("DD MMMM").toString(),
+      moment().add(7, "days").format("DD MMMM").toString(),
+    ],
     datasets: [
       {
         label: "Temp: ",
