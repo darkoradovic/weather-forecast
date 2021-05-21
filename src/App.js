@@ -13,11 +13,11 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/city/:name" component={CityPage} />
-          <Route exact path='/error' component={ErrorPage} />
+          <Route exact path="/error" component={ErrorPage} />
         </Switch>
       </Container>
     </WeatherProvider>
   );
-};
+}; 
 
 export default App;

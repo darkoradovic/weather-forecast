@@ -1,27 +1,23 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Line } from "react-chartjs-2";
 import { WeatherContext } from "../WeatherContext";
 
-const LineChart = ({datas}) => {
+const LineChart = () => {
+  const datas = useContext(WeatherContext);
 
+  const info = datas.datas.map((data) => (data.temp.day - 273).toFixed(0));
 
-  console.log(datas.datas.daily)
-
-  const info = datas.datas.daily.map(days => {
-    return (days.temp.day - 273).toFixed(2);
-  })
-  
   const data = {
-    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6","Day 7"],
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
     datasets: [
       {
         label: "Temp: ",
         data: info,
         fill: false,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgba(255, 99, 132, 0.2)"
-      }
-    ]
+        backgroundColor: "rgb(11, 94, 215)",
+        borderColor: "rgb(11, 94, 215)",
+      },
+    ],
   };
 
   const options = {
@@ -29,11 +25,11 @@ const LineChart = ({datas}) => {
       yAxes: [
         {
           ticks: {
-            beginAtZero: true
-          }
-        }
-      ]
-    }
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
   };
 
   return (
@@ -44,4 +40,3 @@ const LineChart = ({datas}) => {
 };
 
 export default LineChart;
-

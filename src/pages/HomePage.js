@@ -6,7 +6,6 @@ import { Row, Col } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import CardHome from "../components/CardHome";
 import { WeatherContext } from "../WeatherContext";
-import { Link } from "react-router-dom";
 
 const HomePage = ({ history }) => {
   const [city, setCity] = useState("");
@@ -25,7 +24,7 @@ const HomePage = ({ history }) => {
       .then((res) => {
         if (res.data.cod === 200) {
           setResults(res.data);
-          console.log(res.data);
+          //console.log(res.data);
           history.push(`/city/${city}`);
           addEntry();
         } else if (res.data.cod !== 200) {
@@ -37,14 +36,6 @@ const HomePage = ({ history }) => {
         history.push("/error");
       });
     setCity("");
-    //checkError()
-    /* if(!error){
-      setTimeout(() => {
-        history.push("/city");
-      }, 1000);
-  
-      addEntry();
-    } */
   };
 
   const addEntry = () => {
@@ -90,7 +81,6 @@ const HomePage = ({ history }) => {
         setError(true);
         history.push("/error");
       });
-
   };
 
   return (
@@ -125,13 +115,19 @@ const HomePage = ({ history }) => {
             .slice(0, 9)
             .map((tab) => {
               return (
-              <Col lg={3} md={4} sm={6} xs={12} className='cities-cards'  onClick={() => handleName(tab.name)}>
-              <CardHome name={tab.name} time={tab.time} />
-              </Col>
-              )
+                <Col
+                  lg={3}
+                  md={4}
+                  sm={6}
+                  xs={12}
+                  className="cities-cards"
+                  onClick={() => handleName(tab.name)}
+                >
+                  <CardHome name={tab.name} time={tab.time} />
+                </Col>
+              );
             })
         : null}
-      {/*  {results ? <CardHome name={results.name} temp={results.main.temp} /> : null} */}
     </Row>
   );
 };
