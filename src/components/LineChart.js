@@ -6,8 +6,6 @@ import moment from "moment";
 const LineChart = () => {
   const datas = useContext(WeatherContext);
 
-  console.log(datas.datas);
-
   const info = datas.datas.map((data) => (data.temp.day - 273).toFixed(0));
 
   const data = {
